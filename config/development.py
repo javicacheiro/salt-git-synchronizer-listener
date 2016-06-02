@@ -1,0 +1,4 @@
+DEBUG = True
+AUTH_REQUIRED = False
+SECRET_TOKEN = 'dev'
+URL_PREFIX = '/git/v1'
