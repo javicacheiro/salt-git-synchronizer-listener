@@ -1,6 +1,5 @@
 from flask import jsonify
 from werkzeug.exceptions import BadRequest
-from .kvstore import KeyDoesNotExist
 from .exceptions import ValidationError
 from . import api
 
@@ -16,14 +15,6 @@ def validation_error(error):
 @api.errorhandler(BadRequest)
 def bad_request(error):
     response = jsonify({'status': 400, 'error': 'bad request',
-                        'message': error.message})
-    response.status_code = 400
-    return response
-
-
-@api.errorhandler(KeyDoesNotExist)
-def key_does_not_exist(error):
-    response = jsonify({'status': 400, 'error': 'Unable to find it',
                         'message': error.message})
     response.status_code = 400
     return response
